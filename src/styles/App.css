@@ -1,0 +1,89 @@
+/* src/styles/App.css */
+.app {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background */
+}
+
+.app-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.app-header h1 {
+    color: #4CAF50; /* Green color for the title */
+    margin: 0;
+}
+
+.app-header h2 {
+    color: #333; /* Darker color for subtitle */
+    margin: 0;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.instructions {
+    margin-bottom: 20px;
+    background-color: #fff; /* White background for instructions */
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.instructions h3 {
+    margin: 0 0 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2; /* Light gray for header */
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .app {
+        padding: 10px;
+    }
+
+    .filter-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filter-row select, .filter-row input {
+        width: 100%; /* Full width on smaller screens */
+        margin-bottom: 10px; /* Space between dropdowns */
+    }
+
+    .add-filter, .apply-filters {
+        width: 100%; /* Full width buttons */
+    }
+
+    .instructions {
+        padding: 10px;
+    }
+}

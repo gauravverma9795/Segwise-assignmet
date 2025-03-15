@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// src/App.tsx
+import React, { useState } from 'react';
+import Filter from './components/Filter';
+import DataTable from './components/DataTable';
+import PreviewModal from './components/PreviewModal';
+import { mockData } from './data/mockData';
+import './styles/App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => {
+    const [selectedData, setSelectedData] = useState<any>(null);
+    const [filters, setFilters] = useState<any[]>([]);
+
+    const handleRowClick = (data: any) => {
+        setSelectedData(data);
+    };
+
+    const closeModal = () => {
+        setSelectedData(null);
+    };
+
+    const handleFilter = (newFilters: any) => {
+        setFilters(newFilters);
+    };
+
+    const filteredData = mockData.filter((data) => {
+        return filters.every(filter => {
+            const { tag, condition, value } = filter;
+            if (!tag || !condition || !value) return true; // Skip if any field is empty
+            // Implement filtering logic based on tag, condition, and value
+            return true; // Replace with actual filtering logic
+        });
+    });
+
+    return (
+        <div className="app">
+            <h1>Segwise Front End Test</h1>
+            <Filter onFilter={handleFilter} />
+            <DataTable onRowClick={handleRowClick} data={filteredData} />
+            {selectedData && <PreviewModal data={selectedData} onClose={closeModal} />}
+        </div>
+    );
+};
 
 export default App;
